@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<math.h>
+
+int main(void)
+{
+        //Define Variables
+        float x1, y1, x2, y2,
+        side_1, side_2, distance;
+		//Enter Variables
+		printf("Enter x1:");
+		scanf("%f",&x1);
+		printf("Enter y1:");
+		scanf("%f",&y1);
+		printf("Enter x2:");
+		scanf("%f",&x2);
+		printf("Enter y2:");
+		scanf("%f",&y2);
+		
+	  //Math
+    side_1=x2-x1;
+    side_2=y2-y1;
+    distance = sqrt((side_1*side_1)+(side_2*side_2));
+            
+        
+        //Print Results
+        printf("The distance between your two points is %.5f \n", distance);
+        
+}
