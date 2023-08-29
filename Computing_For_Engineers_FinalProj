@@ -1,0 +1,57 @@
+//This is the final project made using Matlab in Computing for Engineers my freshman year (Spring 2023)
+
+%CJR Blackjack Arduino Counter
+%Define your + - and truecount variables
+clear;clc;%clears old data for new information
+a=arduino('COM4','uno'); %define's Arduino for you
+decks=input('Enter the number of decks that the table us using, usually 2,4, or 8:'); %used to calculate everything else
+cards=decks*52;%amount of cards left used to calculate truecount
+runningcount=0;%count of hi and low value cards over the amount of decks
+x=0; %positive variable is x
+y=0; %negative variable is y
+z=0;%card count value
+%display how to use the Arduino counter and the Wong card counting system
+bettingunit=0;%the minimum bet at the table
+%%
+disp('Press the GREEN button ONCE for a number (2,3,7) press TWICE for a number (4,5,6)')
+disp('Press the RED button ONCE for a number (9) press TWICE for a number (10,J,K,Q)')
+disp('Press the YELLOW button when you find an ace')
+disp('Press the BLUE button before counting the true count of every card')
+w=0; %press when aces are seen
+aces=decks*4; %amount of aces left in deck
+writeDigitalPin(a,'D9',0)%red light
+writeDigitalPin(a,'D10',0)%green light
+writeDigitalPin(a,'D11',0)%blue light
+%%
+while 1 %infinite running loop
+x=readDigitalPin(a,'D2'); %reads the pins to see if they are pressed
+y=readDigitalPin(a,'D4'); %reads the pins to see if they are pressed
+w=readDigitalPin(a,'D3'); %reads the pins to see if they are pressed
+z=readDigitalPin(a,'D5'); %reads the pins to see if they are pressed
+%reading the buttons for the pin values
+%%
+if x==0%Green button to be pressed
+clc%cleans space
+decks=cards/52;%calculates the amount of decks left
+runningcount=runningcount+.5; %increases truecount/
+truecount=runningcount/decks; %decides the dealer's advantage
+checktrue(a,truecount,runningcount) %checks the truecount to calculate odds of advantage
+%%
+elseif y==0
+clc%cleans space
+decks=cards/52;%calculates the amount of decks left
+runningcount=runningcount-.5; %decreases truecount'
+truecount=runningcount/decks; %decides the dealer's advantage
+checktrue(a,truecount,runningcount) %checks the truecount to calculate odds of advantage
+%%
+elseif w==0 %calculates aces left
+aces=aces-1; %tells you the amount of aces left
+fprintf('The amount of aces left in the deck are %g\n', aces)
+pause(.1)
+%%
+elseif z==0 %keeps a more accurate truecount
+cards=cards-1; %calculates how many cards are left in the set
+pause(.1)
+fprintf('The amount of cards left is %g\n',cards)
+end
+end
