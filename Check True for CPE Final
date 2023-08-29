@@ -1,0 +1,28 @@
+function checktrue(a,truecount,runningcount)
+if truecount<=.5 %%signifies advantage over dealer
+writeDigitalPin(a,'D9',0)
+writeDigitalPin(a,'D10',1)
+writeDigitalPin(a,'D11',0)
+disp('G1=2,3,7 G2=4,5,6 R1=9 R2=10,J,K,Q') %buttons to press
+howmuchtobet=abs(ceil(runningcount))-1;
+if howmuchtobet<=1
+howmuchtobet=1;
+end
+fprintf('You should raise %g betting units\n',howmuchtobet); %tells you how much to bet
+fprintf('Running count= %g\n',runningcount)
+pause(.1) %prevents multiple reads on button press
+elseif truecoun<.5 && truecount >-.5 %signifies that the odds are up to chancewriteDigitalPin(a,'D9',1)
+writeDigitalPin(a,'D10',1)
+writeDigitalPin(a,'D11',0)
+disp('G1=2,3,7 G2=4,5,6 R1=9 R2=10,J,K,Q') %buttons to press
+disp('You should stay'); fprintf('Running count= %g\n',runningcount)
+pause(.1)
+elseif truecount<-.5 %signifies that dealer has advantage
+writeDigitalPin(a,'D9',1)
+writeDigitalPin(a,'D10',0)
+writeDigitalPin(a,'D11',0)
+disp('G1=2,3,7 G2=4,5,6 R1=9 R2=10,J,K,Q') %buttons to press
+disp('Bet the minimum unit')
+fprintf('Running count= %g\n',runningcount)
+pause(.1)
+end
