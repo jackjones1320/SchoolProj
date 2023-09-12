@@ -1,0 +1,29 @@
+//the following code checks if a number is divisible by 5 or 6
+
+package homework;
+import java.util.Scanner;
+
+
+public class Lab3 {
+	public static void main(String[] args) {
+		//Setup your scanner
+			Scanner input = new Scanner(System.in);
+		//call for input of variable 
+			System.out.print("Please Enter Integer: ");
+				int Random_Integer = input.nextInt();
+		//run your if statements to check by divideability 
+			if (Random_Integer % 5 == 0 && Random_Integer % 6 ==0) {
+				System.out.println(Random_Integer + " is divisible by both 5 and 6.");
+			}
+			else if (Random_Integer % 5 == 0 && Random_Integer % 6 !=0) {
+				System.out.println(Random_Integer + " is divisible by 5 but not 6.");
+			}
+			else if (Random_Integer % 5 != 0 && Random_Integer % 6 ==0) {
+				System.out.println(Random_Integer + " is divisible by 6 but not 5.");
+			}
+			else {
+				System.out.println(Random_Integer+" is divisible by neither 5 nor 6.");
+			}
+			
+	}
+}
