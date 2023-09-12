@@ -1,0 +1,33 @@
+//this uses length and radius to calculate the area and volume of a cylinder
+
+package homework;
+
+//import needed
+import java.util.Scanner;
+
+public class HW1 {
+	public static void main(String[] args) {
+		//define your constants 
+		double PI= 3.14159; 
+		
+		//call for input
+		Scanner input = new Scanner(System.in);
+		
+		//input radius
+		System.out.print("Please input a value for radius: ");
+			double radius = input.nextDouble();
+		
+		//input length
+		System.out.print("Please input a value for length: ");
+			double length = input.nextDouble();
+		
+		//do the math
+			double area = radius*radius*PI;
+			double volume = area*length;
+		
+		//display area and volume
+		System.out.println("The area of the cylinder is "+area+" units squared.");
+		System.out.println("The volume of the cylinder is "+volume+" units cubed.");
+		
+	}
+}
