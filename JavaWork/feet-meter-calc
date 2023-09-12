@@ -1,0 +1,18 @@
+//feet to meter calculation
+
+package homework;
+
+import java.util.Scanner;
+
+public class Lab1 {
+	public static void main(String[] args) {
+		//call for the amount of feet to be converted
+			Scanner input = new Scanner(System.in);
+			System.out.print("Please enter the value of feet: ");
+		//convert the amount of feet
+			double foot = input.nextDouble();
+			double meter = 0.305*foot;
+		//output the final answer
+			System.out.println(foot + " ft converted to meters is " + meter + " m");
+	}
+}
