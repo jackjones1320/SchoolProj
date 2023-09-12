@@ -1,0 +1,28 @@
+//uses an if statement to challenge logic on if you should practice or not
+
+package homework;
+import java.util.Scanner;
+
+public class HW2 {
+	public static void main(String[] args) {
+			//call for variables to be input
+				Scanner input = new Scanner(System.in);
+			//call for days, wins, if it is raining and the temperature 
+				System.out.print("How many days are left until the tournament? ");
+					int days = input.nextInt();
+				System.out.print("How many games have you won recently? ");
+					int wins = input.nextInt();
+				System.out.print("Is it raining? (true/false) ");
+					boolean isRaining = input.nextBoolean();
+				System.out.print("What is the temperature outside? ");
+					double temperature = input.nextDouble();
+				boolean doPractice = false;
+					//challenge your logic EX: days<14, wins<2, isRaining = 0, temperature < 95
+					if (days<14 || wins<2 || !isRaining && temperature<95) {
+						doPractice = true;
+					}	
+					else {
+						doPractice = false;}
+					System.out.print("Should you practice today? "+doPractice);
+	}
+}
