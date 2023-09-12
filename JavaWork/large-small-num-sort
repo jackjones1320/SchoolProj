@@ -1,0 +1,31 @@
+//sorts two numbers from smallest to largest
+
+package homework;
+import java.util.Scanner;
+
+public class Lab2 {
+	public static void main(String[] args) {
+		//setup your scanner 
+			Scanner input = new Scanner(System.in);
+		//define num1
+			System.out.print("Enter the value of num1: ");
+				int num1 = input.nextInt();
+		//define num2
+				System.out.print("Enter the value of num2: ");
+					int num2 = input.nextInt();
+		//create a temp variable
+			int temp = 0;
+		//perform your if swap
+				if (num1<= num2) {
+					System.out.print("The sorted numbers are "+num1+", "+num2);
+				}
+				else {
+					temp=num1;
+					num1=num2;
+					num2=temp;
+					System.out.print("The sorted numbers are "+num1+", "+num2);
+				}
+					
+	}
+
+}
